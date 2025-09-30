@@ -1,0 +1,14 @@
+#!/bin/bash
+#  /usr/local/bin/
+
+INTERVAL=1
+
+MEMORYICON=$'\uefc5'
+BATTERYICON=$'\uf240'
+TIMEICON=$'\U000f0954'
+
+while true; do
+	STATUS="$(dateblock);$MEMORYICON  $(memoryblock)  $BATTERYICON  $(batteryblock)  $TIMEICON  $(timeblock)  "
+	xsetroot -name "$STATUS"
+	sleep $INTERVAL
+done

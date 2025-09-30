@@ -1,0 +1,4 @@
+#!/bin/bash
+#  /usr/local/bin/
+
+free -h | awk '/Mem/ {print $3 " / " $7}'

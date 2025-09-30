@@ -1,0 +1,4 @@
+#!/bin/bash
+#  /usr/local/bin
+
+upower -i $(upower -e | grep BAT) | awk '/percentage/ {print $2}'
