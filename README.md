@@ -7,9 +7,9 @@ I couldn't quite get dwmblocks to work with autostart which I found to be a game
 - fullgaps
 - splitstatus
 - autostart
-- unoccupytags
+- unoccupytags (unofficial / custom)
 # General Information
-## Requirements
+## Applications
 - Rofi
 - Kitty
 - Neofetch
