@@ -1,0 +1,9 @@
+//  Rofi Configuration
+//  ~/.config/rofi/
+
+configuration {
+	modi: "window,drun,ssh,combi";
+	combi-modi: "window,drun,ssh";
+}
+@theme "/usr/local/share/rofi/themes/gruvbox-dark-soft-custom.rasi"
+
