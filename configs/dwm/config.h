@@ -1,8 +1,8 @@
-// DWM Configuration File 
+//  DWM Configuration File 
 static const unsigned int borderpx   = 0;
 static const unsigned int snap       = 32;
 static const unsigned int gappx      = 5;
-static const unsigned int tilemargin = 5;
+static const unsigned int tilemargin = 15;
 
 static const int showbar            = 1;
 static const int topbar             = 1;
@@ -19,7 +19,7 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#1f40b2";
 
-// FG | BG | Border
+//  FG | BG | Border
 static const char *colors[][3]      = {
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
@@ -104,4 +104,3 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
