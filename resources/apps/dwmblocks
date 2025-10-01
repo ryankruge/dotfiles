@@ -15,7 +15,7 @@ POWERSOURCE='BAT0'
 
 while true; do
 	battery_status=$(cat "$BATINFODIR/$POWERSOURCE/status")
-	if [[ $battery_status == 'Charging' || $battery_status == 'Not charging' ]]; then
+	if [[ $battery_status == 'Charging' || $battery_status == 'Not charging' || $battery_status == 'Full' ]]; then
 		BATTERY_ICON=$BATTERY_RECHARGING_ICON
 	else
 		BATTERY_ICON=$BATTERY_DISCHARGING_ICON
