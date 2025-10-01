@@ -681,20 +681,18 @@ dirtomon(int dir)
 void
 drawbar(Monitor *m)
 {
-	int x, w, tw = 0;
+	int w, tw = 0;
 	int boxs = drw->fonts->h / 9;
 	int boxw = drw->fonts->h / 6 + 2;
 	unsigned int i, occ = 0, urg = 0;
+	
+	int ww = m->ww - (2 * barmargx);
+	int x = 0;
 	Client *c;
 
 	if (!m->showbar)
 		return;
 
-	// if (m == selmon) { /* status is only drawn on selected monitor */
-	// 	drw_setscheme(drw, scheme[SchemeNorm]);
-	// 	tw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
-	// 	drw_text(drw, m->ww - tw, 0, tw, bh, 0, stext, 0);
-	// }
 	char *mstext;
 	char *rstext;
 	int msx;
@@ -704,7 +702,7 @@ drawbar(Monitor *m)
 		if (c->isurgent)
 			urg |= c->tags;
 	}
-	x = 0;
+
 	for (i = 0; i < LENGTH(tags); i++) {
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
@@ -721,18 +719,6 @@ drawbar(Monitor *m)
 	drw_setscheme(drw, scheme[SchemeNorm]);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
-	// if ((w = m->ww - tw - x) > bh) {
-	// 	if (m->sel) {
-	// 		drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
-	// 		drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
-	// 		if (m->sel->isfloating)
-	// 			drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
-	// 	} else {
-	// 		drw_setscheme(drw, scheme[SchemeNorm]);
-	// 		drw_rect(drw, x, 0, w, bh, 1, 1);
-	// 	}
-	// }
-
 	drw_setscheme(drw, scheme[SchemeNorm]);
 	drw_rect(drw, x, 0, m->ww - x, bh, 1, 1);
 
@@ -740,11 +726,11 @@ drawbar(Monitor *m)
 		rstext = strdup(stext);
 		if (splitstatus) {
 			mstext = strsep(&rstext, splitdelim);
-			msx = (m->ww - TEXTW(mstext) + lrpad) / 2; /* x position of middle status text */
+			msx = (ww - TEXTW(mstext) + lrpad) / 2; /* x position of middle status text */
 			drw_text(drw, msx, 0, TEXTW(mstext) - lrpad, bh, 0, mstext, 0);
  		}
 		tw = TEXTW(rstext) - lrpad + 2; /* 2px right padding */
-		drw_text(drw, m->ww - tw, 0, tw, bh, 0, rstext, 0);
+		drw_text(drw, ww - tw, 0, tw, bh, 0, rstext, 0);
  	}
 
 	drw_map(drw, m->barwin, 0, 0, m->ww, bh);
@@ -1904,6 +1890,7 @@ void
 updatebars(void)
 {
 	Monitor *m;
+
 	XSetWindowAttributes wa = {
 		.override_redirect = True,
 		.background_pixmap = ParentRelative,
@@ -1911,9 +1898,12 @@ updatebars(void)
 	};
 	XClassHint ch = {"dwm", "dwm"};
 	for (m = mons; m; m = m->next) {
+		int ww = m->ww - (2 * barmargx);
+		int wx = m->wx + barmargx;
+
 		if (m->barwin)
 			continue;
-		m->barwin = XCreateWindow(dpy, root, m->wx, m->by, m->ww, bh, 0, DefaultDepth(dpy, screen),
+		m->barwin = XCreateWindow(dpy, root, wx, m->by, ww, bh, 0, DefaultDepth(dpy, screen),
 				CopyFromParent, DefaultVisual(dpy, screen),
 				CWOverrideRedirect|CWBackPixmap|CWEventMask, &wa);
 		XDefineCursor(dpy, m->barwin, cursor[CurNormal]->cursor);
