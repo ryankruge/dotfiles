@@ -3,7 +3,7 @@ static const unsigned int borderpx   = 0;
 static const unsigned int snap       = 32;
 static const unsigned int gappx      = 5;
 static const unsigned int tilemargin = 15;
-static const unsigned int barmargx   = 30;
+static const unsigned int barmargx   = 120;
 
 static const int showbar            = 1;
 static const int topbar             = 1;
