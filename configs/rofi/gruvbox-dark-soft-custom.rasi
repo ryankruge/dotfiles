@@ -1,22 +1,32 @@
-//  Gruvbox Modified Schema (https://github.com/bardisty)
-//  /usr/local/share/rofi/themes/
+/* ==========================================================================
+   Rofi color theme
+
+   Based on the Gruvbox color scheme for Vim by morhetz
+   https://github.com/morhetz/gruvbox
+
+   File: gruvbox-dark-soft.rasi
+   Desc: Gruvbox dark (soft contrast) color theme for Rofi
+   Author: bardisty <b@bah.im>
+   Source: https://github.com/bardisty/gruvbox-rofi
+   Modified: Mon Feb 12 2018 06:04:37 PST -0800
+   ========================================================================== */
 
 * {
-    //  Theme Settings
+    /* Theme settings */
     highlight: bold italic;
     scrollbar: true;
 
-    //  Gruvbox Dark Colors
-    gruvbox-dark-bg0-soft:     #32302f;
-    gruvbox-dark-bg1:          #3c3836;
-    gruvbox-dark-bg3:          #665c54;
+    /* Gruvbox dark colors */
+    gruvbox-dark-bg0-soft:     #0a0a0a;
+    gruvbox-dark-bg1:          #0f0f0f;
+    gruvbox-dark-bg3:          #1f1f1f;
     gruvbox-dark-fg0:          #fbf1c7;
     gruvbox-dark-fg1:          #ebdbb2;
     gruvbox-dark-blue-dark:    #1a3591;
     gruvbox-dark-blue-light:   #1f40b2;
     gruvbox-dark-gray:         #a89984;
 
-    //  Theme Colours
+    /* Theme colors */
     background:                  @gruvbox-dark-bg0-soft;
     background-color:            @background;
     foreground:                  @gruvbox-dark-fg1;
@@ -48,4 +58,5 @@
 window {
 	width: 25%;
 }
+
 @import "gruvbox-common"
