@@ -3,12 +3,27 @@
 
 INTERVAL=1
 
-MEMORYICON=$'\uefc5'
-BATTERYICON=$'\uf240'
-TIMEICON=$'\U000f0954'
+BATTERY_DISCHARGING_ICON=$'\U000F17E2'
+BATTERY_RECHARGING_ICON=$'\U000F0084'
+
+MEMORY_ICON=$'\UEFC5'
+TIME_ICON=$'\U000F0954'
+BATTERY_ICON=$BATTERY_DISCHARGING_ICON
+
+BATINFODIR='/sys/class/power_supply'
+POWERSOURCE='BAT0'
 
 while true; do
-	STATUS="$(dateblock);$MEMORYICON  $(memoryblock)  $BATTERYICON  $(batteryblock)  $TIMEICON  $(timeblock)  "
+	battery_status=$(cat "$BATINFODIR/$POWERSOURCE/status")
+	if [[ $battery_status == 'Charging' || $battery_status == 'Not charging' ]]; then
+		BATTERY_ICON=$BATTERY_RECHARGING_ICON
+	else
+		BATTERY_ICON=$BATTERY_DISCHARGING_ICON
+	fi
+
+	echo $BATTERY_ICON
+
+	STATUS="$(dateblock);$MEMORY_ICON  $(memoryblock)  $BATTERY_ICON  $(batteryblock)  $TIME_ICON  $(timeblock)  "
 	xsetroot -name "$STATUS"
 	sleep $INTERVAL
 done

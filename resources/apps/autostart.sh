@@ -1,6 +1,7 @@
 #!/bin/sh
 #  ~/.dwm/autostart.sh
 
-picom --daemon
-dwmblocks &
+# feh --bg-fill /usr/share/backgrounds/blue-background.jpg
+pkill picom; picom --daemon
+pkill dwmblocks; dwmblocks &
 kitty --hold=yes neofetch &
