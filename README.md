@@ -1,13 +1,13 @@
 # Dot Files & DWM
-In this repository you will find an aggregation of a range of different configuration files that, together, form a comfortable experience that is beautiful - yet functional. Personally, I made use of the default DWM status bar with the split status patch applied; I also applied a few minor patches that I personally wrote such as the ability to disable the 'occupied' indicators for tags that appear when a tile occupies the tag.
+In this repository, you will find a series of different configuration files that, together, form a comfortable experience that is stylish—yet functional. Featured is the inclusion of a modified DWM status bar with the split status patch applied; Also including a few minor patches that I wrote, such as the ability to disable the *occupied* icons that appear when a tile occupies a tag.
 
-I couldn't quite get dwmblocks to work with autostart which I found to be a game changer and so I wrote a simple bash script with the same name that performs a similar visual function - it unfortunately doesn't feature clickable blocks. In this script, there are a few other scripts linked that serve block-specific data such as the time, memory usage, or battery percentage.
+Unfortunately, dwmblocks refused to work with autostart so I wrote a bash script that performs a similar visual function.
 # DWM Specifications
 ## Patches
 - fullgaps
 - splitstatus
 - autostart
-- unoccupytags (unofficial / custom)
+- unoccupytags (*custom*)
 # General Information
 ## Applications
 - Rofi
@@ -15,6 +15,6 @@ I couldn't quite get dwmblocks to work with autostart which I found to be a game
 - Neofetch
 - DWM
 - LightDM
-- Picom (https://github.com/yshui/picom)
+- [Picom](https://github.com/yshui/picom) (Fork)
 ## Summary
 Feel free to take any of the material exhibited in this repository for your own personal use.
