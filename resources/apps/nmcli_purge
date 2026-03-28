@@ -1,0 +1,4 @@
+#!/bin/bash
+#  /usr/local/bin
+
+nmcli --fields UUID,TYPE con show | grep -v loopback | awk '{print }' | while read line; do nmcli con delete uuid; done
